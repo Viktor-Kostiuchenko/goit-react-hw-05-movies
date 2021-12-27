@@ -1,0 +1,19 @@
+.image {
+  border-radius: 5px;
+  width: 280px;
+  height: 398px;
+  margin-bottom: 10px;
+  object-fit: cover;
+
+  @media screen and (min-width: 720px) {
+    width: 294px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 274px;
+  }
+}
+
+.title {
+  text-transform: uppercase;
+  margin: 0;
+}
