@@ -43,10 +43,22 @@ export default function MovieDetails({ movie }) {
         <div className={s.infoMore}>
           <ul className={s.additional}>
             <li className={s.additionalItem}>
-              <NavLink to={`${url}/cast`}>Cast</NavLink>
+              <NavLink
+                className={s.link}
+                activeClassName={s.activeLink}
+                to={`${url}/cast`}
+              >
+                Cast
+              </NavLink>
             </li>
             <li className={s.additionalItem}>
-              <NavLink to={`${url}/reviews`}>Reviews</NavLink>
+              <NavLink
+                className={s.link}
+                activeClassName={s.activeLink}
+                to={`${url}/reviews`}
+              >
+                Reviews
+              </NavLink>
             </li>
           </ul>
         </div>

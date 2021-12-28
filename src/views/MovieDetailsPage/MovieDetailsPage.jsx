@@ -1,7 +1,14 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-import { useParams, Route, useRouteMatch } from 'react-router-dom';
+import {
+  useParams,
+  Route,
+  useRouteMatch,
+  useLocation,
+  useHistory,
+} from 'react-router-dom';
 import { fetchMovies } from '../../services/moviesApi';
 import MovieDetails from '../../components/MovieDetails';
+import ButtonBack from '../../components/ButtonBack';
 
 const CastPage = lazy(() =>
   import('../CastPage' /* webpackChunkName: "cast"*/),
@@ -11,6 +18,8 @@ const ReviewsPage = lazy(() =>
 );
 
 export default function MovieDetailsPage() {
+  const location = useLocation();
+  const history = useHistory();
   const { path } = useRouteMatch();
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
@@ -23,8 +32,20 @@ export default function MovieDetailsPage() {
     asyncFetch();
   }, [movieId]);
 
+  const onBackClick = () => {
+    if (location && location.state && location.state.from) {
+      const { pathname, search } = location.state.from;
+      history.push(`${pathname}${search}`);
+
+      return;
+    }
+    history.push('/');
+  };
+
   return (
     <>
+      <ButtonBack onBackClick={onBackClick} />
+
       {movie && <MovieDetails movie={movie} />}
 
       <Suspense fallback={<h2>ЗАГРУЖАЕМ...</h2>}>

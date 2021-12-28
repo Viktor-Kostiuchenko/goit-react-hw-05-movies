@@ -1,18 +1,50 @@
 import { useEffect, useState } from 'react';
 import Movies from '../../components/Movies';
+import Pagination from '../../components/Pagination';
 import { fetchMovies } from '../../services/moviesApi';
 
 export default function HomePage() {
   const [movies, setMovies] = useState(null);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const asyncFetch = async () => {
-      const { results } = await fetchMovies('/trending/all/day');
-      setMovies(results);
+      const movies = await fetchMovies(`/trending/all/day?page=${page}`);
+      setMovies(movies);
     };
 
     asyncFetch();
-  }, []);
+  }, [page]);
 
-  return <>{movies && <Movies movies={movies} />}</>;
+  const onNextBtnClick = () => {
+    setPage(state => state + 1);
+    window.scrollTo({
+      behavior: 'smooth',
+      top: 0,
+    });
+  };
+
+  const onPrevBtnClick = () => {
+    setPage(state => state - 1);
+    window.scrollTo({
+      behavior: 'smooth',
+      top: 0,
+    });
+  };
+
+  return (
+    <>
+      {movies && (
+        <>
+          <Movies movies={movies.results} />
+          <Pagination
+            next={onNextBtnClick}
+            prev={onPrevBtnClick}
+            page={page}
+            totalPages={movies.total_pages}
+          />
+        </>
+      )}
+    </>
+  );
 }

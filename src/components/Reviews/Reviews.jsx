@@ -3,7 +3,6 @@ import noPhoto from '../../images/no-photo.png';
 import s from './Reviews.module.scss';
 
 export default function Reviews({ reviews }) {
-  console.log(reviews);
   return (
     <ul className={s.reviewsList}>
       {reviews.results.map(
