@@ -1,0 +1,26 @@
+.reviewsItem {
+  display: flex;
+
+  padding-top: 20px;
+
+  &:not(:last-child) {
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid black;
+  }
+}
+
+.reviewsAuthor {
+  min-width: 120px;
+  margin-right: 10px;
+}
+
+.author {
+  margin-bottom: 5px;
+
+  font-size: 20px;
+}
+
+.image {
+  width: 80px;
+}

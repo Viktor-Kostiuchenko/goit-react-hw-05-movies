@@ -1,0 +1,55 @@
+.castList {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin-bottom: 40px;
+  gap: 15px;
+}
+
+.castItem {
+  position: relative;
+
+  width: 220px;
+  margin-bottom: 20px;
+
+  transition: box-shadow 450ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  color: #fff;
+  border-radius: 5px;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+
+    box-shadow: rgb(73 73 73 / 95%) #8c8c8c;
+  }
+
+  @media screen and (min-width: 720px) {
+    margin-bottom: 0;
+  }
+}
+
+.nameBox {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+
+  width: 100%;
+
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: rgb(73 73 73 / 95%);
+}
+
+.character {
+  font-size: 13px;
+}
+
+.image {
+  width: 220px;
+  height: 300px;
+  margin-bottom: 10px;
+
+  border-radius: 5px;
+  object-fit: cover;
+}

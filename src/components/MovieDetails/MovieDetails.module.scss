@@ -1,5 +1,6 @@
 .movie {
   margin: 0 auto;
+  padding: 20px;
 
   @media screen and (min-width: 720px) {
     display: flex;
@@ -8,43 +9,53 @@
 }
 
 .imageBox {
-  padding: 20px;
+  margin-right: 20px;
 }
 
 .image {
-  margin: 0 auto;
   height: 100%;
+  margin: 0 auto;
+
   border-radius: 5px;
 
   @media screen and (min-width: 720px) {
     min-width: 264px;
   }
+
   @media screen and (min-width: 1024px) {
     min-width: 396px;
   }
 }
 
 .infoBox {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .title {
   display: inline;
-  font-size: 20px;
+
   margin-bottom: 20px;
+
   text-transform: uppercase;
-  margin-bottom: 20px;
+
+  font-size: 20px;
+
   @media screen and (min-width: 1024px) {
     font-size: 30px;
   }
 }
 
 .year {
-  font-size: 20px;
   margin-bottom: 20px;
-  text-transform: uppercase;
-  font-weight: 500;
   margin-left: 5px;
+
+  text-transform: uppercase;
+
+  font-size: 20px;
+  font-weight: 500;
+
   @media screen and (min-width: 1024px) {
     font-size: 30px;
   }
@@ -52,6 +63,7 @@
 
 .rating {
   margin-top: 20px;
+
   font-size: 20px;
   font-weight: 500;
 }
@@ -62,7 +74,9 @@
 
 .genres {
   display: inline-flex;
+
   margin-top: 20px;
+
   font-size: 20px;
   font-weight: 500;
 }
@@ -73,6 +87,7 @@
   &:first-child {
     margin-left: 5px;
   }
+
   &:not(:last-child) {
     margin-right: 5px;
   }
@@ -84,31 +99,35 @@
 
 .about {
   margin-top: 20px;
-  font-weight: 500;
+
   text-transform: uppercase;
+
   font-size: 20px;
   font-weight: 500;
 }
 
 .text {
   margin-top: 10px;
-  line-height: 1.67;
+
   font-size: 18px;
+  line-height: 1.67;
 }
 
 .additional {
-  margin-top: 20px;
   display: flex;
   justify-content: space-around;
 
   & .additionalItem {
-    font-size: 25px;
+    width: 150px;
+    padding: 10px;
+
+    text-align: center;
+
+    color: black;
     border: 1px solid black;
     border-radius: 5px;
-    padding: 10px;
-    width: 150px;
-    text-align: center;
-    background-color: #ffffff;
-    color: black;
+    background-color: #fff;
+
+    font-size: 25px;
   }
 }
