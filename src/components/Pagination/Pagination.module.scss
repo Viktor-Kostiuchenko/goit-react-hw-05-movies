@@ -1,0 +1,31 @@
+.buttonBox {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  font-size: 25px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  color: #000000;
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  &:hover {
+    background-color: #00bfff;
+    color: #ffffff;
+  }
+
+  &[disabled] {
+    pointer-events: none;
+    opacity: 0.4;
+  }
+}
