@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Section from '../Section';
 import Navigation from '../Navigation';
+import Loading from '../Loader/Loader';
 import 'react-toastify/dist/ReactToastify.css';
 
 const HomePage = lazy(() =>
@@ -22,7 +23,7 @@ export default function App() {
     <Section>
       <Navigation />
 
-      <Suspense fallback={<h2>ЗАГРУЖАЕМ...</h2>}>
+      <Suspense fallback={<Loading />}>
         <Switch>
           <Route path="/" exact>
             <HomePage />

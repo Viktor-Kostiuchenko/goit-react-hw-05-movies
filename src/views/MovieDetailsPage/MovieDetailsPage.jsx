@@ -9,6 +9,7 @@ import {
 import { fetchMovies } from '../../services/moviesApi';
 import MovieDetails from '../../components/MovieDetails';
 import ButtonBack from '../../components/ButtonBack';
+import Loading from '../../components/Loader/Loader';
 
 const CastPage = lazy(() =>
   import('../CastPage' /* webpackChunkName: "cast"*/),
@@ -48,7 +49,7 @@ export default function MovieDetailsPage() {
 
       {movie && <MovieDetails movie={movie} />}
 
-      <Suspense fallback={<h2>ЗАГРУЖАЕМ...</h2>}>
+      <Suspense fallback={<Loading />}>
         <Route path={`${path}/cast`}>
           <CastPage />
         </Route>
