@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import MoviesItem from './MoviesItem';
 import s from './Movies.module.scss';
 
@@ -22,3 +23,11 @@ export default function Movies({ movies }) {
     </ul>
   );
 }
+
+Movies.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }),
+  ),
+};

@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
+import { BiSearchAlt } from 'react-icons/bi';
 import s from './SearchForm.module.scss';
 
 export default function SearchForm({ onSubmit }) {
@@ -33,10 +35,13 @@ export default function SearchForm({ onSubmit }) {
           onChange={handleNameChange}
         />
         <button type="submit" className={s.button}>
-          {/* <BiSearchAlt className={s.searchIcon} /> */}
-          go
+          <BiSearchAlt className={s.searchIcon} />
         </button>
       </form>
     </>
   );
 }
+
+SearchForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

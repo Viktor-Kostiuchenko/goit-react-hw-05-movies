@@ -66,3 +66,9 @@ export default function MovieDetails({ movie }) {
     </div>
   );
 }
+
+MovieDetails.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  }),
+};

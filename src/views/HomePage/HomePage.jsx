@@ -9,7 +9,7 @@ export default function HomePage() {
 
   useEffect(() => {
     const asyncFetch = async () => {
-      const movies = await fetchMovies(`/trending/all/day?page=${page}`);
+      const movies = await fetchMovies(`/trending/movie/week?page=${page}`);
       setMovies(movies);
     };
 

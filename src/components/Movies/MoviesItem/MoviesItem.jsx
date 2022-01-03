@@ -8,10 +8,16 @@ export default function MoviesItem({ src, title, name }) {
       <img
         className={s.image}
         src={src ? `https://image.tmdb.org/t/p/w500${src}` : noPoster}
-        alt={title}
+        alt={title ? title : name}
         loading="lazy"
       />
       <h2 className={s.title}>{title ? title : name}</h2>
     </div>
   );
 }
+
+MoviesItem.propTypes = {
+  src: PropTypes.string,
+  title: PropTypes.string,
+  name: PropTypes.string,
+};

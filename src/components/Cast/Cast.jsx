@@ -26,3 +26,9 @@ export default function Cast({ castList }) {
     </ul>
   );
 }
+
+Cast.propTypes = {
+  castList: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  }),
+};

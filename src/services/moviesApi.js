@@ -15,6 +15,6 @@ export async function fetchMovies(q) {
     const { data } = await getMovies(q);
     return data;
   } catch (error) {
-    toast.error(`Нет фильмов по запросу`);
+    toast.error(`Нет информации по запросу`);
   }
 }

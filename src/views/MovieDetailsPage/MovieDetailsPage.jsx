@@ -41,6 +41,7 @@ export default function MovieDetailsPage() {
       return;
     }
     history.push('/');
+    // history.push(location?.state?.from ?? '/movies')
   };
 
   return (
