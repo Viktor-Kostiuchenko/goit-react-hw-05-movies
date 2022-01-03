@@ -4,7 +4,8 @@ import { fetchMovies } from '../../services/moviesApi';
 import Cast from '../../components/Cast';
 
 export default function CastPage() {
-  const { movieId } = useParams();
+  const { slug } = useParams();
+  const movieId = slug.match(/[a-z0-9]+$/gm)[0];
   const [castList, setCastList] = useState(null);
 
   useEffect(() => {

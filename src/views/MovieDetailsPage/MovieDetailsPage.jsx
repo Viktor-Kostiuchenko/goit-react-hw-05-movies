@@ -22,7 +22,8 @@ export default function MovieDetailsPage() {
   const location = useLocation();
   const history = useHistory();
   const { path } = useRouteMatch();
-  const { movieId } = useParams();
+  const { slug } = useParams();
+  const movieId = slug.match(/[a-z0-9]+$/gm)[0];
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {

@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import MoviesItem from './MoviesItem';
 import s from './Movies.module.scss';
+import createSlug from '../../helpers/slugify';
 
 export default function Movies({ movies }) {
   const location = useLocation();
@@ -12,7 +13,7 @@ export default function Movies({ movies }) {
           <li key={id} className={s.moviesitem}>
             <Link
               to={{
-                pathname: `/movies/${id}`,
+                pathname: `/movies/${createSlug(`${title}-${id}`)}`,
                 state: { from: location },
               }}
             >
