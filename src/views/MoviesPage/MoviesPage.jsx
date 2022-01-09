@@ -15,19 +15,23 @@ export default function MoviesPage() {
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState(null);
 
+  const searchQuery = new URLSearchParams(location.search).get('query');
+
   useEffect(() => {
-    if (!query) {
+    if (!searchQuery) {
       return;
     }
+
+    setQuery(searchQuery);
     const asyncFetch = async () => {
       const movies = await fetchMovies(
-        `search/movie?query=${query}&page=${page}`,
+        `search/movie?query=${searchQuery}&page=${page}`,
       );
       setMovies(movies);
     };
 
     asyncFetch();
-  }, [page, query]);
+  }, [page, searchQuery]);
 
   const onFormSubmit = query => {
     setQuery(query);
