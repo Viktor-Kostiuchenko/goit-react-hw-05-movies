@@ -3,6 +3,7 @@ import {
   useLocation,
   useHistory,
 } from 'react-router-dom/cjs/react-router-dom.min';
+import { toast } from 'react-toastify';
 import SearchForm from '../../components/SearchForm';
 import Movies from '../../components/Movies';
 import Pagination from '../../components/Pagination';
@@ -27,6 +28,11 @@ export default function MoviesPage() {
       const movies = await fetchMovies(
         `search/movie?query=${searchQuery}&page=${page}`,
       );
+
+      if (movies.results.length === 0) {
+        toast.error(`No results were found for ${searchQuery}`);
+      }
+
       setMovies(movies);
     };
 
@@ -61,12 +67,14 @@ export default function MoviesPage() {
       {movies && (
         <>
           <Movies movies={movies.results} />
-          <Pagination
-            next={onNextBtnClick}
-            prev={onPrevBtnClick}
-            page={page}
-            totalPages={movies.total_pages}
-          />
+          {movies.results.length !== 0 && (
+            <Pagination
+              next={onNextBtnClick}
+              prev={onPrevBtnClick}
+              page={page}
+              totalPages={movies.total_pages}
+            />
+          )}
         </>
       )}
     </>
