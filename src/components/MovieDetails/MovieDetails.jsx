@@ -1,10 +1,19 @@
-import { NavLink, useRouteMatch } from 'react-router-dom';
+import {
+  NavLink,
+  useRouteMatch,
+  useLocation,
+  useParams,
+} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import noPoster from '../../images/no_image_poster.png';
 import s from './MovieDetails.module.scss';
 
 export default function MovieDetails({ movie }) {
+  const { slug } = useParams();
+  const movieId = slug.match(/[a-z0-9]+$/gm)[0];
   const { url } = useRouteMatch();
+  const location = useLocation();
+
   return (
     <div className={s.movie}>
       <div className={s.imageBox}>
@@ -26,18 +35,18 @@ export default function MovieDetails({ movie }) {
             <span className={s.year}>({movie.release_date.slice(0, 4)})</span>
           </h3>
           <p className={s.rating}>
-            USER SCORE:
+            user score:
             <span className={s.result}>{movie.vote_average * 10}%</span>
           </p>
           <ul className={s.genres}>
-            GENRES:
+            genres:
             {movie.genres.map(({ id, name }) => (
               <li key={id} className={s.genre}>
                 {name}
               </li>
             ))}
           </ul>
-          <h4 className={s.about}>ABOUT:</h4>
+          <h4 className={s.about}>about:</h4>
           <p className={s.text}>{movie.overview}</p>
         </div>
         <div className={s.infoMore}>
@@ -46,7 +55,10 @@ export default function MovieDetails({ movie }) {
               <NavLink
                 className={s.link}
                 activeClassName={s.activeLink}
-                to={`${url}/cast`}
+                to={{
+                  pathname: `${url}/cast`,
+                  state: { ...location.state, id: movieId },
+                }}
               >
                 Cast
               </NavLink>
@@ -55,7 +67,10 @@ export default function MovieDetails({ movie }) {
               <NavLink
                 className={s.link}
                 activeClassName={s.activeLink}
-                to={`${url}/reviews`}
+                to={{
+                  pathname: `${url}/reviews`,
+                  state: { ...location.state, id: movieId },
+                }}
               >
                 Reviews
               </NavLink>

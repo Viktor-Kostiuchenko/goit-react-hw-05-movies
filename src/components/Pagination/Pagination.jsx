@@ -8,17 +8,17 @@ export default function Pagination({ next, prev, page, totalPages }) {
         className={s.button}
         type="button"
         onClick={prev}
-        disabled={page > 1 ? false : true}
+        disabled={page <= 1}
       >
-        PREV
+        prev
       </button>
       <button
         className={s.button}
         type="button"
         onClick={next}
-        disabled={page < totalPages ? false : true}
+        disabled={page >= totalPages}
       >
-        NEXT
+        next
       </button>
     </div>
   );

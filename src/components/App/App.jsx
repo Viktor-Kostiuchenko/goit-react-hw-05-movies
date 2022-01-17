@@ -6,13 +6,13 @@ import Navigation from '../Navigation';
 import Loading from '../Loader/Loader';
 import 'react-toastify/dist/ReactToastify.css';
 
-const HomePage = lazy(() =>
+const AsyncHomePage = lazy(() =>
   import('../../views/HomePage' /* webpackChunkName: "home-page"*/),
 );
-const MoviesPage = lazy(() =>
+const AsyncMoviesPage = lazy(() =>
   import('../../views/MoviesPage' /* webpackChunkName: "movies-page"*/),
 );
-const MovieDetailsPage = lazy(() =>
+const AsyncMovieDetailsPage = lazy(() =>
   import(
     '../../views/MovieDetailsPage' /* webpackChunkName: "movie-details-page"*/
   ),
@@ -25,15 +25,10 @@ export default function App() {
 
       <Suspense fallback={<Loading />}>
         <Switch>
-          <Route path="/" exact>
-            <HomePage />
-          </Route>
-          <Route path="/movies" exact>
-            <MoviesPage />
-          </Route>
-          <Route path="/movies/:slug">
-            <MovieDetailsPage />
-          </Route>
+          <Route path="/" exact component={AsyncHomePage} />
+          <Route path="/movies" exact component={AsyncMoviesPage} />
+          <Route path="/movies/:slug" component={AsyncMovieDetailsPage} />
+
           <Redirect to="/" />
         </Switch>
       </Suspense>

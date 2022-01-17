@@ -7,7 +7,7 @@ export default function ButtonBack({ onBackClick }) {
     <div className={s.buttonBox}>
       <button className={s.button} type="button" onClick={onBackClick}>
         <IoMdArrowRoundBack className={s.icon} />
-        BACK
+        back
       </button>
     </div>
   );
